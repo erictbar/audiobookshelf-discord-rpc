@@ -70,7 +70,7 @@ struct LibraryItemResponse {
 
 #[derive(Debug, Deserialize)]
 struct MediaResponse {
-    chapters: Vec<Chapter>,
+    chapters: Option<Vec<Chapter>>,
 }
 
 #[derive(Debug)]
@@ -287,16 +287,18 @@ async fn set_activity(
 
     let genres = session.mediaMetadata.genres.get(0).map(|s| s.as_str()).unwrap_or("Unknown Genre");
     
-    let now = SystemTime::now();
-
-    let large_text = if config.show_chapters.unwrap_or(false) {
-        if let Some(current_chapter) = library_item.media.chapters.iter().find(|ch| {
-            current_time >= ch.start && current_time <= ch.end
-        }) {
-            if has_chapter_prefix(&current_chapter.title) {
-                current_chapter.title.to_string()
+    let now = SystemTime::now();    let large_text = if config.show_chapters.unwrap_or(false) {
+        if let Some(chapters) = &library_item.media.chapters {
+            if let Some(current_chapter) = chapters.iter().find(|ch| {
+                current_time >= ch.start && current_time <= ch.end
+            }) {
+                if has_chapter_prefix(&current_chapter.title) {
+                    current_chapter.title.to_string()
+                } else {
+                    format!("Chapter {}", current_chapter.title)
+                }
             } else {
-                format!("Chapter {}", current_chapter.title)
+                genres.to_string()
             }
         } else {
             genres.to_string()
