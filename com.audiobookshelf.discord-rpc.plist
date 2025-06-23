@@ -7,9 +7,9 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/eric/Developer/audiobookshelf-discord-rpc/target/release/audiobookshelf-discord-rpc</string>
+        <string>/Users/Eric/Developer/audiobookshelf-discord-rpc/target/release/audiobookshelf-discord-rpc</string>
         <string>-c</string>
-        <string>/Users/eric/Developer/audiobookshelf-discord-rpc/config.json</string>
+        <string>/Users/Eric/Developer/audiobookshelf-discord-rpc/config.json</string>
     </array>
     
     <key>RunAtLoad</key>
@@ -19,13 +19,13 @@
     <true/>
     
     <key>StandardOutPath</key>
-    <string>/Users/eric/Library/Logs/audiobookshelf-discord-rpc.log</string>
+    <string>/Users/Eric/Library/Logs/audiobookshelf-discord-rpc.log</string>
     
     <key>StandardErrorPath</key>
-    <string>/Users/eric/Library/Logs/audiobookshelf-discord-rpc-error.log</string>
+    <string>/Users/Eric/Library/Logs/audiobookshelf-discord-rpc-error.log</string>
     
     <key>WorkingDirectory</key>
-    <string>/Users/eric/audiobookshelf-discord-rpc</string>
+    <string>/Users/Eric/Developer/audiobookshelf-discord-rpc</string>
     
     <key>EnvironmentVariables</key>
     <dict>
@@ -34,4 +34,3 @@
     </dict>
 </dict>
 </plist>
-
