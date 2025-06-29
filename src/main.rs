@@ -254,7 +254,7 @@ async fn set_activity(
     if let (Some(last_time), Some(last_api_time)) = (timing_info.last_position, timing_info.last_api_time) {
         let elapsed = SystemTime::now().duration_since(last_api_time).unwrap_or(Duration::from_secs(0));
         // Wait longer (10 seconds) before clearing activity
-        if elapsed.as_secs() >= 60 && (current_time - last_time).abs() < f64::EPSILON {
+        if elapsed.as_secs() >= 10 && (current_time - last_time).abs() < f64::EPSILON {
             playback_state.is_playing = false;
             discord.clear_activity()?;
             timing_info.last_position = Some(current_time);
